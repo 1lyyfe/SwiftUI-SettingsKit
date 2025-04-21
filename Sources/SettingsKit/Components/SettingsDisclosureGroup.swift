@@ -11,10 +11,10 @@ import SwiftUI
 ///
 /// Can be used to nest related settings in an expandable section.
 public struct SettingsDisclosureGroup<Content: View>: View {
-    private let title: String
-    private let content: Content
+    public let title: String
+    public let content: Content
     
-    @State private var isExpanded: Bool = false
+    @Binding private var isExpanded: Bool
     @Environment(\.settingsStyle) private var style
     
     /// Initializes a new `SettingsDisclosureGroup`.
@@ -22,8 +22,9 @@ public struct SettingsDisclosureGroup<Content: View>: View {
     /// - Parameters:
     ///   - title: The title for the collapsed/expanded section.
     ///   - content: The settings rows shown when expanded.
-    public init(title: String, @ViewBuilder content: () -> Content) {
+    public init(title: String, isExpanded: Binding<Bool> = .constant(true), @ViewBuilder content: () -> Content) {
         self.title = title
+        self._isExpanded = isExpanded
         self.content = content()
     }
     

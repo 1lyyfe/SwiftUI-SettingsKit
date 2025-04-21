@@ -11,9 +11,9 @@ import SwiftUI
 ///
 /// Can be styled with optional `role` to indicate destructive intent.
 public struct SettingsButtonRow: View {
-    private let title: String
-    private let role: ButtonRole?
-    private let action: () -> Void
+    public let title: String
+    public let role: ButtonRole?
+    public let action: () -> Void
     @Environment(\.settingsStyle) private var style
     
     /// Initializes a new `SettingsButtonRow`.

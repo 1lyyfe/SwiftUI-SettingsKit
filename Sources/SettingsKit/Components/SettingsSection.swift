@@ -11,8 +11,8 @@ import SwiftUI
 ///
 /// Typically used inside a `Form` or `List` to organize settings into logical sections.
 public struct SettingsSection<Content: View>: View {
-    private let header: String?
-    private let content: Content
+    public let header: String?
+    public let content: Content
 
     /// Initializes a new `SettingsSection`.
     ///

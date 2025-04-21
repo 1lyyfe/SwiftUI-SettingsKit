@@ -1,4 +1,4 @@
-# ⚙️ SwiftUI Settings Kit
+# 🧰 SwiftUI Settings Kit
 
 A clean, customizable, and production-ready **settings UI kit** for iOS apps — built entirely in **SwiftUI**.
 
@@ -78,6 +78,57 @@ All components will adapt automatically via `@Environment(\.settingsStyle)`.
 
 ---
 
+## 🧪 Tests
+
+This library includes a **fully documented test suite** using `XCTest` to validate all components:
+
+- ✅ `SettingsToggleRowTests`
+- ✅ `SettingsNavigationRowTests`
+- ✅ `SettingsButtonRowTests`
+- ✅ `SettingsDisclosureGroupTests`
+
+### ✅ Running Tests
+
+To run tests for the core `SettingsKit` package:
+
+#### 🛠 If you're using Xcode:
+1. **Open `Package.swift` directly** in Xcode (not the demo app (`SettingsKitDemo`) project (in the `Examples` folder))
+2. Select the `SettingsKitTests` scheme
+3. Press `⌘ + U` to run tests
+
+> ❗️Note: If you open the demo app (`SettingsKitDemo.xcodeproj`) instead of the package, `⌘ + U` will only run demo app tests — not the actual library tests.
+
+#### 🧪 Or run via terminal:
+
+```bash
+cd path/to/SwiftUI-SettingsKit
+swift test
+```
+
+---
+
+This will build and run the full suite from the Tests/SettingsKitTests folder.
+
+### 🔍 Note on Test Philosophy
+All tests are written without using fragile reflection. We simulate real SwiftUI usage through state and bindings to ensure reliability and future-proofing.
+
+**Example from `SettingsDisclosureGroupTests.swift`:**
+
+```swift
+func testDisclosureGroupHonorsBinding() {
+    var isExpanded = false
+    let binding = Binding<Bool>(
+        get: { isExpanded },
+        set: { isExpanded = $0 }
+    )
+
+    let group = SettingsDisclosureGroup(title: "Debug", isExpanded: binding) {
+        Text("Advanced Settings")
+    }
+
+    XCTAssertFalse(isExpanded)
+}
+
 ## 🧪 Example App
 
 The included demo app shows how to use every component in a real SwiftUI project:
@@ -129,4 +180,4 @@ Follow [Haider on Medium](https://medium.com/@haiderashfaq) for upcoming article
 
 ---
 
-Happy shipping 🚀
+Happy shipping 🚀   

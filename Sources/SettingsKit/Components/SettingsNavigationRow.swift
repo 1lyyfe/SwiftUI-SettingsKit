@@ -11,9 +11,9 @@ import SwiftUI
 ///
 /// Typically used to link to detail or sub-settings screens.
 public struct SettingsNavigationRow<Destination: View>: View {
-    private let title: String
-    private let subtitle: String?
-    private let destination: Destination
+    public let title: String
+    public let subtitle: String?
+    public let destination: Destination
     @Environment(\.settingsStyle) private var style
     
     /// Initializes a new `SettingsNavigationRow`.

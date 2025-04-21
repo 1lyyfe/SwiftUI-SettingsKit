@@ -11,8 +11,8 @@ import SwiftUI
 ///
 /// Designed for use in settings panels where users can enable or disable features.
 public struct SettingsToggleRow: View {
-    private let title: String
-    private let subtitle: String?
+    public let title: String
+    public let subtitle: String?
     @Binding private var isOn: Bool
     @Environment(\.settingsStyle) private var style
     
