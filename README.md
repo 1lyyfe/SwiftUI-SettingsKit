@@ -1,4 +1,4 @@
-# 🧰 SwiftUI Settings Kit
+# ⚙️ SwiftUI Settings Kit
 
 A clean, customizable, and production-ready **settings UI kit** for iOS apps — built entirely in **SwiftUI**.
 
@@ -33,7 +33,7 @@ This open-source library gives you polished components to build beautiful settin
 
 ---
 
-## 🧱 Components
+## 🧱 Components + Usages
 
 ```swift
 SettingsSection(header: "General") {
@@ -75,6 +75,50 @@ You can globally customize appearance by injecting a style into the environment:
 ```
 
 All components will adapt automatically via `@Environment(\.settingsStyle)`.
+
+---
+
+## 🧪 Example App
+
+The included demo app shows how to use every component in a real SwiftUI project:
+
+```swift
+@main
+struct SettingsKitDemoApp: App {
+    var body: some Scene {
+        WindowGroup {
+            SettingsPreviewScreen()
+        }
+    }
+}
+```
+
+> Check out `SettingsPreviewScreen.swift` inside `SettingsKitDemo/` to try the components live.
+
+---
+
+## 📦 Installation
+
+You can use [Swift Package Manager](https://swift.org/package-manager/) to install **SettingsKit** in your project.
+
+### Using Xcode:
+
+1. Open your project in Xcode
+2. Go to **File > Add Packages**
+3. Enter this URL: [https://github.com/1lyyfe/SwiftUI-SettingsKit](https://github.com/1lyyfe/SwiftUI-SettingsKit)
+4. Select version **from: 1.0.0**
+
+---
+
+### Or via `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/1lyyfe/SwiftUI-SettingsKit.git", from: "1.0.0")
+]
+```
+
+Then add "SettingsKit" to your target dependencies.
 
 ---
 
@@ -129,30 +173,6 @@ func testDisclosureGroupHonorsBinding() {
     XCTAssertFalse(isExpanded)
 }
 ```
-
----
-## 🧪 Example App
-
-The included demo app shows how to use every component in a real SwiftUI project:
-
-```swift
-@main
-struct SettingsKitDemoApp: App {
-    var body: some Scene {
-        WindowGroup {
-            SettingsPreviewScreen()
-        }
-    }
-}
-```
-
-> Check out `SettingsPreviewScreen.swift` inside `SettingsKitDemo/` to try the components live.
-
----
-
-## 📦 Installation
-
-Coming soon via Swift Package Manager (SPM)
 
 ---
 
