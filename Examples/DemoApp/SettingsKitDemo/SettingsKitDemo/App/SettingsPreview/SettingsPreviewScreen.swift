@@ -14,6 +14,7 @@ struct SettingsPreviewScreen: View {
     @State private var backgroundSync = false
     @State private var devMode = false
     @State private var showDebugTools = false
+    @State private var showAdvanced = false
 
     var body: some View {
         NavigationStack {
@@ -29,7 +30,7 @@ struct SettingsPreviewScreen: View {
                 }
 
                 SettingsSection(header: "Advanced") {
-                    SettingsDisclosureGroup(title: "Developer Options") {
+                    SettingsDisclosureGroup(title: "Developer Options", isExpanded: $showAdvanced) {
                         SettingsToggleRow(title: "Enable Developer Mode", isOn: $devMode)
                         SettingsToggleRow(title: "Show Debug Tools", isOn: $showDebugTools)
                     }

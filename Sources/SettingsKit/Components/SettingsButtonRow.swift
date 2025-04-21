@@ -7,9 +7,17 @@
 
 import SwiftUI
 
-/// A tappable settings row used for actions like logout or reset.
+/// A settings row that performs an action when tapped.
 ///
-/// Can be styled with optional `role` to indicate destructive intent.
+/// Use this component for destructive or non-navigational actions,
+/// like logging out, clearing cache, or resetting preferences.
+///
+/// - Example:
+/// ```swift
+/// SettingsButtonRow(title: "Log Out", role: .destructive) {
+///     logout()
+/// }
+/// ```
 public struct SettingsButtonRow: View {
     public let title: String
     public let role: ButtonRole?

@@ -7,9 +7,16 @@
 
 import SwiftUI
 
-/// A settings row that navigates to another destination when tapped.
+/// A settings row that navigates to a destination screen.
 ///
-/// Typically used to link to detail or sub-settings screens.
+/// Use this component to represent tappable rows that push to additional settings screens or forms.
+///
+/// - Example:
+/// ```swift
+/// SettingsNavigationRow(title: "Appearance") {
+///     AppearanceSettingsView()
+/// }
+/// ```
 public struct SettingsNavigationRow<Destination: View>: View {
     public let title: String
     public let subtitle: String?

@@ -7,18 +7,59 @@
 
 import SwiftUI
 
-/// A configuration struct for customizing the visual style of SettingsKit components.
+/// A global styling object for customizing the appearance of settings components.
 ///
-/// Override this to change fonts, colors, padding, and more throughout the settings UI.
+/// Inject `SettingsStyle` into the environment using `.settingsStyle(...)`
+/// to apply consistent fonts, colors, padding, and themes across your entire settings UI.
+///
+/// - Example:
+/// ```swift
+/// SettingsSection(header: "General") {
+///     SettingsToggleRow(title: "Notifications", isOn: $isOn)
+/// }
+/// .settingsStyle(SettingsStyle(
+///     titleFont: .body,
+///     subtitleFont: .caption,
+///     titleColor: .primary,
+///     subtitleColor: .gray,
+///     rowVerticalPadding: 10,
+///     destructiveColor: .red,
+///     toggleTintColor: .blue
+/// ))
+/// ```
 public struct SettingsStyle {
-    public var titleFont: Font
-    public var subtitleFont: Font
-    public var titleColor: Color
-    public var subtitleColor: Color
-    public var rowVerticalPadding: CGFloat
-    public var destructiveColor: Color
-    public var toggleTintColor: Color
-
+    /// The font used for all row titles.
+    public let titleFont: Font
+    
+    /// The font used for subtitles, if applicable.
+    public let subtitleFont: Font
+    
+    /// The color for row titles.
+    public let titleColor: Color
+    
+    /// The color for subtitles or secondary text.
+    public let subtitleColor: Color
+    
+    /// Vertical padding inside each row.
+    public let rowVerticalPadding: CGFloat
+    
+    /// The color used for destructive buttons.
+    public let destructiveColor: Color
+    
+    /// The tint color for toggle switches.
+    public let toggleTintColor: Color
+    
+    /// Creates a new settings style instance.
+    ///
+    /// - Parameters:
+    ///   - titleFont: Font for primary row titles.
+    ///   - subtitleFont: Font for row subtitles.
+    ///   - titleColor: Color for row titles.
+    ///   - subtitleColor: Color for subtitles or detail text.
+    ///   - rowVerticalPadding: Vertical padding inside rows.
+    ///   - destructiveColor: Color used for destructive buttons.
+    ///   - toggleTintColor: Tint color for toggle switches.
+    
     /// Initializes a new settings style with full customization.
     public init(
         titleFont: Font = .body,
@@ -37,7 +78,7 @@ public struct SettingsStyle {
         self.destructiveColor = destructiveColor
         self.toggleTintColor = toggleTintColor
     }
-
+    
     /// A default system style.
     public static let `default` = SettingsStyle()
 }

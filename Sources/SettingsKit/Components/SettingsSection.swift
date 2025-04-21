@@ -7,13 +7,22 @@
 
 import SwiftUI
 
-/// A container for grouping related settings rows under an optional section header.
+/// A reusable container for grouping related settings rows with an optional header.
 ///
-/// Typically used inside a `Form` or `List` to organize settings into logical sections.
+/// Use `SettingsSection` to visually group settings within a form or screen.
+/// You can provide a header string (optional), and any content as a view builder.
+///
+/// - Example:
+/// ```swift
+/// SettingsSection(header: "Notifications") {
+///     SettingsToggleRow(title: "Enable Alerts", isOn: $alertsEnabled)
+///     SettingsToggleRow(title: "Sounds", isOn: $soundEnabled)
+/// }
+/// ```
 public struct SettingsSection<Content: View>: View {
     public let header: String?
     public let content: Content
-
+    
     /// Initializes a new `SettingsSection`.
     ///
     /// - Parameters:
@@ -23,13 +32,13 @@ public struct SettingsSection<Content: View>: View {
         self.header = header
         self.content = content()
     }
-
+    
     public var body: some View {
         Section(header: headerView) {
             content
         }
     }
-
+    
     @ViewBuilder
     private var headerView: some View {
         if let header = header {

@@ -7,42 +7,50 @@
 
 import SwiftUI
 
-/// A collapsible section of settings rows using a `DisclosureGroup`.
+/// A collapsible, expandable section for related settings.
 ///
-/// Can be used to nest related settings in an expandable section.
+/// Use `SettingsDisclosureGroup` to group related rows under a tappable,
+/// expandable heading. Ideal for advanced or optional settings.
+///
+/// Pass a `Binding<Bool>` to control whether the group is expanded.
+/// If not provided, it will default to always-expanded and non-interactive.
+///
+/// - Example (interactive):
+/// ```swift
+/// @State private var showAdvanced = false
+///
+/// SettingsDisclosureGroup(title: "Advanced", isExpanded: $showAdvanced) {
+///     SettingsToggleRow(title: "Enable Dev Mode", isOn: $devMode)
+/// }
+/// ```
 public struct SettingsDisclosureGroup<Content: View>: View {
-    public let title: String
-    public let content: Content
-    
+    private let title: String
     @Binding private var isExpanded: Bool
-    @Environment(\.settingsStyle) private var style
+    private let content: Content
     
-    /// Initializes a new `SettingsDisclosureGroup`.
+    /// Creates a settings disclosure group.
     ///
     /// - Parameters:
-    ///   - title: The title for the collapsed/expanded section.
-    ///   - content: The settings rows shown when expanded.
-    public init(title: String, isExpanded: Binding<Bool> = .constant(true), @ViewBuilder content: () -> Content) {
+    ///   - title: The section header displayed at the top of the group.
+    ///   - isExpanded: A `Binding<Bool>` that controls whether the group is expanded. If omitted, defaults to `.constant(true)`.
+    ///   - content: A view builder that provides the content inside the disclosure group.
+    
+    public init(
+        title: String,
+        isExpanded: Binding<Bool> = .constant(true),
+        @ViewBuilder content: () -> Content
+    ) {
         self.title = title
         self._isExpanded = isExpanded
         self.content = content()
     }
     
     public var body: some View {
-        DisclosureGroup(
-            isExpanded: $isExpanded,
-            content: {
-                VStack(alignment: .leading, spacing: 0) {
-                    content
-                }
-                .padding(.leading, 2)
-            },
-            label: {
-                Text(title)
-                    .font(style.titleFont)
-                    .foregroundColor(style.titleColor)
-            }
-        )
-        .padding(.vertical, style.rowVerticalPadding)
+        DisclosureGroup(isExpanded: $isExpanded) {
+            content
+        } label: {
+            Text(title)
+        }
     }
 }
+

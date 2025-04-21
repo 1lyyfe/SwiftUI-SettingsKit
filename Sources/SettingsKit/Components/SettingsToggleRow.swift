@@ -7,9 +7,23 @@
 
 import SwiftUI
 
-/// A reusable SwiftUI settings row with a toggle switch and optional subtitle.
+/// A settings row with a toggle switch.
 ///
-/// Designed for use in settings panels where users can enable or disable features.
+/// Use this component for boolean preferences, like enabling notifications or dark mode.
+///
+/// - Example:
+/// ```swift
+/// SettingsToggleRow(title: "Enable Notifications", isOn: $notificationsEnabled)
+/// ```
+///
+/// You can also provide a subtitle for context:
+/// ```swift
+/// SettingsToggleRow(
+///     title: "Background Sync",
+///     subtitle: "Keeps your data up to date",
+///     isOn: $syncEnabled
+/// )
+/// ```
 public struct SettingsToggleRow: View {
     public let title: String
     public let subtitle: String?
@@ -21,7 +35,7 @@ public struct SettingsToggleRow: View {
     /// - Parameters:
     ///   - title: The main label displayed.
     ///   - subtitle: Optional detail text shown below the title.
-    ///   - isOn: A binding to the on/off toggle state.
+    ///   - isOn: A binding to the boolean state of the toggle.
     public init(title: String, subtitle: String? = nil, isOn: Binding<Bool>) {
         self.title = title
         self.subtitle = subtitle
