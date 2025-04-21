@@ -128,7 +128,9 @@ func testDisclosureGroupHonorsBinding() {
 
     XCTAssertFalse(isExpanded)
 }
+```
 
+---
 ## 🧪 Example App
 
 The included demo app shows how to use every component in a real SwiftUI project:
