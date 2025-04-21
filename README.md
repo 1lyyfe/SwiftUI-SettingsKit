@@ -25,17 +25,20 @@ This open-source library gives you polished components to build beautiful settin
 
 ## 📸 Preview
 
-| Section + Toggles | Navigation & Disclosure | Action Button |
-|------------------|--------------------------|----------------|
-| ![](Gifs/toggles.gif) | ![](Gifs/nav-disclosure.gif) | ![](Gifs/button.gif) |
-
-> Note: Preview layout and gif file names should match your actual assets.
+| Light Mode | Dark Mode |
+|------------|-----------|
+| <img src="https://github.com/user-attachments/assets/3529c6d8-b54c-46b3-bc03-04c84ae6021d" height="400" /> | <img src="https://github.com/user-attachments/assets/e05e7c91-fb2a-4299-b80e-b676d6923160" height="400" /> |
 
 ---
 
 ## 🧱 Components + Usages
 
 ```swift
+@State private var isOn = true
+@State private var isOn2 = false
+@State private var isDev = false
+@State private var showAdvanced = true
+
 SettingsSection(header: "General") {
     SettingsToggleRow(title: "Enable Notifications", isOn: $isOn)
     SettingsToggleRow(title: "Background Sync", subtitle: "Keeps data updated in background", isOn: $isOn2)
@@ -45,7 +48,7 @@ SettingsNavigationRow(title: "Appearance") {
     AppearanceScreen()
 }
 
-SettingsDisclosureGroup(title: "Advanced") {
+SettingsDisclosureGroup(title: "Advanced", isExpanded: $showAdvanced) {
     SettingsToggleRow(title: "Enable Dev Mode", isOn: $isDev)
 }
 
