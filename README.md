@@ -1,4 +1,7 @@
 # ⚙️ SwiftUI Settings Kit
+![SwiftPM](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)
+![License](https://img.shields.io/github/license/1lyyfe/SwiftUI-SettingsKit)
+![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)
 
 A clean, customizable, and production-ready **settings UI kit** for iOS apps — built entirely in **SwiftUI**.
 
